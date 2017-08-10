@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/story_list_item_border"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/frameImageTitle"
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:id="@+id/imageViewStoryImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#7000">
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                    android:id="@+id/textViewStoryTitle"
+                    style="@style/textViewTitleSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+            </LinearLayout>
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/layoutDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            android:layoutDirection="rtl">
+
+            <LinearLayout
+                android:id="@+id/textualDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageViewUser"
+                        style="@style/imageViewSmallIcon"
+                        android:src="@drawable/icons8_user_96" />
+
+                    <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                        android:id="@+id/textViewUser"
+                        style="@style/textViewRegularText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="20" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageViewDate"
+                        style="@style/imageViewSmallIcon"
+                        android:src="@drawable/icons8_calendar_96" />
+
+                    <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                        android:id="@+id/textViewDate"
+                        style="@style/textViewRegularText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <me.gujun.android.taggroup.TagGroup
+                android:id="@+id/tagGroupStoryTags"
+                style="@style/tagGroupReadOnly"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/textualDetails"
+                android:layout_marginTop="15dp"
+                android:layoutDirection="rtl" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

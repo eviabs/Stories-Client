@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="stories.spectrum.huji.ac.il.stories.activities.StoryActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_header_height"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <FrameLayout
+                android:id="@+id/frameImageTitleStoryActivity"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:id="@+id/imageViewStoryImageStoryActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#7000">
+
+                    <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                        android:id="@+id/textViewStoryTitleStoryActivity"
+                        style="@style/textViewTitleSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        android:layoutDirection="rtl"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageViewAdress"
+                            style="@style/imageViewSmallIcon"
+                            android:src="@drawable/directional_sign" />
+
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewAddress"
+                            style="@style/textViewRegularText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="right"
+                            android:text="11" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layoutDirection="rtl"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imageViewDistance"
+                            style="@style/imageViewSmallIcon"
+                            android:src="@drawable/icons8_marker_96" />
+
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewDistance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="11"
+                            style="@style/textViewRegularText"
+                            android:gravity="right"/>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layoutDirection="rtl"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imageViewDate"
+                            style="@style/imageViewSmallIcon"
+                            android:src="@drawable/icons8_calendar_96" />
+
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="11"
+                            style="@style/textViewRegularText"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layoutDirection="rtl"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imageViewUser"
+                            style="@style/imageViewSmallIcon"
+                            android:src="@drawable/icons8_user_96" />
+
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="11"
+                            style="@style/textViewRegularText"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorGray"
+                    android:layout_margin="15dp"
+                    />
+                <me.gujun.android.taggroup.TagGroup
+                    android:id="@+id/tagGroupStoryTagsStoryActivity"
+                    style="@style/tagGroupReadOnly"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layoutDirection="rtl"
+                    android:layout_gravity="right"
+                    />
+
+                <ImageView
+                    android:id="@+id/imageViewStaticMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="25dp" />
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesButton
+                    android:id="@+id/buttonStartStory"
+                    style="@style/buttonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="התחל סיפור" />
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesButton
+                    android:id="@+id/buttonNavigate"
+                    style="@style/buttonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="bottom"
+                    android:text="נווט אל הסיפור" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

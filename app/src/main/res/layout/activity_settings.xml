@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    tools:context="stories.spectrum.huji.ac.il.stories.activities.SettingsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="@dimen/toolbar_header_height">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- Title -->
+            <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                android:id="@+id/TextViewSettingsTitle"
+                style="@style/textViewSettingsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/settings_settings"
+                />
+
+            <!-- Seperator -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/colorGray" />
+
+            <!-- Settings item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:orientation="vertical">
+
+                        <!-- Utem name -->
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewNavigation"
+                            style="@style/textViewSettingsItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/settings_navigation" />
+
+                        <!-- Item state -->
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewStateNavigation"
+                            style="@style/textViewSettingsState"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/settings_off" />
+
+                    </LinearLayout>
+
+                    <!-- Settings controler -->
+                    <Switch
+                        android:id="@+id/switchNavigation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:text="" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <!-- Settings item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:orientation="vertical">
+
+                        <!-- Utem name -->
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewServer"
+                            style="@style/textViewSettingsItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/settings_server" />
+
+                        <!-- Item state -->
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewStateServer"
+                            style="@style/textViewSettingsState"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/settings_off" />
+
+                    </LinearLayout>
+
+                    <!-- Settings controler -->
+                    <Switch
+                        android:id="@+id/switchServer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:gravity="center_vertical"
+                        android:layout_weight="1"
+                        android:text="" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Settings item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:orientation="vertical">
+
+                        <!-- Item name -->
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewCache"
+                            style="@style/textViewSettingsItem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/settings_cache" />
+
+                        <!-- Item state -->
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewStateCache"
+                            style="@style/textViewSettingsState"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="" />
+
+                    </LinearLayout>
+
+                    <!-- Settings controler -->
+                    <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                        android:id="@+id/TextViewCacheClear"
+                        style="@style/textViewSettingsLink"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="left"
+                        android:gravity="center_vertical"
+                        android:textDirection="ltr"
+                        android:text="@string/settings_cache_clear"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+            <!-- Title -->
+            <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                android:id="@+id/TextViewSettingsTitleAAbout"
+                style="@style/textViewSettingsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/settings_about" />
+
+            <!-- Seperator -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/colorGray" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                android:id="@+id/TextViewVersion"
+                style="@style/textViewSettingsItem"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/settings_version" />
+
+            <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                android:id="@+id/TextViewVersionNumber"
+                style="@style/textViewSettingsItemAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="" />
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:orientation="horizontal">
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                    android:id="@+id/TextViewSite"
+                    style="@style/textViewSettingsItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/settings_website" />
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                    android:id="@+id/TextViewSiteUrl"
+                    style="@style/textViewSettingsItemAbout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/website" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

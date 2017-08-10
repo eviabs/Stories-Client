@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="stories.spectrum.huji.ac.il.stories.activities.StoryActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/toolbar_header_height"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <FrameLayout
+                android:id="@+id/frameImageTitleStoryActivity"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:id="@+id/imageViewStoryImageStoryActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:background="@color/colorGray"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/edit_image" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#7000">
+
+                    <stories.spectrum.huji.ac.il.stories.views.StoriesEditText
+                        android:id="@+id/editTextStoryTitleAddStoryActivity"
+                        style="@style/editTextTitleSmall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/add_story_name"
+                        android:text="" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layoutDirection="rtl"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imageViewAdress"
+                            style="@style/imageViewSmallIcon"
+                            android:src="@drawable/directional_sign" />
+
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewAddress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="11"
+                            style="@style/textViewRegularText"
+                            android:gravity="right"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layoutDirection="rtl"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imageViewDate"
+                            style="@style/imageViewSmallIcon"
+                            android:src="@drawable/icons8_calendar_96" />
+
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text=""
+                            style="@style/textViewRegularText"
+                            android:gravity="right"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layoutDirection="rtl"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginTop="12dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/imageViewUser"
+                            style="@style/imageViewSmallIcon"
+                            android:src="@drawable/icons8_user_96" />
+
+                        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                            android:id="@+id/TextViewUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="11"
+                            style="@style/textViewRegularText"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!-- Separator -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorGray"
+                    android:layout_margin="15dp"
+                    />
+
+                <me.gujun.android.taggroup.TagGroup
+                    android:id="@+id/tagGroupAddStoryTags"
+                    style="@style/tagGroupEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layoutDirection="rtl"
+                    android:layout_gravity="right"
+                    />
+
+                <ImageView
+                    android:id="@+id/imageViewStaticMap"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="25dp"
+                    android:background="@color/colorGray"
+                    android:src="@android:drawable/ic_dialog_map"
+                    />
+
+                <!-- Separator -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/colorGray"
+                    android:layout_margin="15dp"
+                    />
+
+                <!-- Recorder -->
+                <FrameLayout
+                    android:id="@+id/storyRecorderContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp">
+                </FrameLayout>
+
+                <LinearLayout
+                    android:id="@+id/TextViewExplainContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layoutDirection="rtl"
+                    android:layout_margin="20dp"
+                    android:layout_below="@+id/recorder_container"
+                    >
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:src="@drawable/exclamation_mark"
+                        android:layout_gravity="center_vertical"
+
+                        />
+                    <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                        android:id="@+id/TextViewExplain"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/explain_recording_add_story"
+                        android:layout_gravity="center_vertical"
+                        style="@style/textViewExplanationText"
+                        android:layout_marginRight="15dp"
+
+                        />
+                </LinearLayout>
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesButton
+                    android:id="@+id/buttonAddStory"
+                    style="@style/buttonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:text="@string/add_story" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

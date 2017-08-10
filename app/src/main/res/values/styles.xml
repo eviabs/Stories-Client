@@ -1,0 +1,230 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorOrange</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="tagGroupStories" parent="TagGroup">
+        <item name="atg_inputHint">@string/add_tag</item>
+        <item name="atg_borderStrokeWidth">0.5dp</item>
+        <item name="atg_textSize">13sp</item>
+        <item name="atg_horizontalSpacing">8dp</item>
+        <item name="atg_verticalSpacing">4dp</item>
+        <item name="atg_horizontalPadding">12dp</item>
+        <item name="atg_verticalPadding">3dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+    </style>
+
+    <style name="tagGroupEdit" parent="tagGroupStories">
+        <item name="atg_isAppendMode">true</item>
+        <item name="atg_textColor">@color/colorOrange</item>
+        <item name="atg_backgroundColor">#ffffff</item>
+        <item name="atg_borderColor">@color/colorOrange</item>
+
+        <item name="atg_dashBorderColor">@color/colorOrange</item>
+        <item name="atg_inputHintColor">@color/colorOrange</item>
+        <item name="atg_inputTextColor">@color/colorOrange</item>
+        <item name="atg_pressedBackgroundColor">#10000000</item>
+        <item name="atg_checkedBackgroundColor">@color/colorOrange</item>
+        <item name="atg_checkedTextColor">#ffffff</item>
+
+    </style>
+
+    <style name="tagGroupReadOnlySelected" parent="tagGroupStories">
+        <item name="atg_isAppendMode">false</item>
+        <item name="atg_textColor">#ffffff</item>
+        <item name="atg_backgroundColor">@color/colorOrange</item>
+        <item name="atg_borderColor">@color/colorOrange</item>
+        <item name="atg_dashBorderColor">@color/colorOrange</item>
+        <item name="atg_inputHintColor">#ffffff</item>
+        <item name="atg_inputTextColor">#ffffff</item>
+        <item name="atg_pressedBackgroundColor">@color/colorOrangeLight</item>
+    </style>
+
+    <style name="tagGroupReadOnlyNotSelected" parent="tagGroupStories">
+        <item name="atg_isAppendMode">false</item>
+        <item name="atg_textColor">@color/colorOrange</item>
+        <item name="atg_backgroundColor">#ffffff</item>
+        <item name="atg_borderColor">#ffffff</item>
+        <item name="atg_dashBorderColor">#ffffff</item>
+        <item name="atg_inputHintColor">#ffffff</item>
+        <item name="atg_inputTextColor">#ffffff</item>
+        <item name="atg_pressedBackgroundColor">#10000000</item>
+        <item name="android:layout_marginEnd">0dp</item>
+        <item name="android:layout_marginStart">0dp</item>
+    </style>
+
+    <style name="tagGroupReadOnly" parent="tagGroupStories">
+        <item name="atg_isAppendMode">false</item>
+        <item name="atg_textColor">@color/colorGray</item>
+        <item name="atg_backgroundColor">#ffffff</item>
+        <item name="atg_borderColor">@color/colorGray</item>
+        <item name="atg_dashBorderColor">#ffffff</item>
+        <item name="atg_inputHintColor">#ffffff</item>
+        <item name="atg_inputTextColor">#ffffff</item>
+        <item name="atg_pressedBackgroundColor">#10000000</item>
+    </style>
+
+    <style name="buttonStyle" parent="@android:style/Widget.Button.Small">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:layout_marginStart">40dp</item>
+        <item name="android:layout_marginEnd">40dp</item>
+        <item name="android:background">@drawable/button_corner</item>
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/GveretLevinAlefAlefAlef-Regular.ttf</item>
+    </style>
+
+    <style name="textEditStyle" parent="@android:style/Widget.EditText">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColorHint">@color/colorGray</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:gravity">right</item>
+        <item name="android:layout_gravity">right</item>
+    </style>
+
+    <style name="textViewTitle" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/YiddishkeitAlefAlefAlef-Bold.otf</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">70sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textViewSmallText" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColor">@color/colorOrange</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="textViewRegularText" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="textViewExplanationText" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColor">@color/colorGrayStrong</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="textViewTitleSmall" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/GveretLevinAlefAlefAlef-Regular.ttf</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="editTextTitleSmall" parent="@android:style/Widget.EditText">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/GveretLevinAlefAlefAlef-Regular.ttf</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColorHint">@color/colorGray</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+    </style>
+
+    <style name="imageViewSmallIcon" parent="@android:style/Widget">
+        <item name="android:layout_width">20dp</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+    </style>
+
+    <style name="imageViewVerySmallIcon" parent="@android:style/Widget">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_marginStart">7dp</item>
+        <item name="android:layout_marginEnd">7dp</item>
+    </style>
+
+    <style name="textViewPin" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColor">@color/colorGrayStrong</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="textViewFiltersFragment" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="seekBarFiltersFragment" parent="Widget.AppCompat.SeekBar">
+        <item name="colorAccent">@color/colorOrange</item>
+    </style>
+
+    <style name="progressDialogStories" parent="AppTheme">
+        <item name="colorAccent">@color/colorGray</item>
+    </style>
+
+    <style name="progressDialogWhiteStories" parent="AppTheme">
+        <item name="colorAccent">#ffffff</item>
+    </style>
+
+    <style name="textViewSettingsTitle" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColor">@color/colorOrange</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
+    <style name="textViewSettingsItem" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColor">@color/colorOrange</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
+    <style name="textViewSettingsItemAbout" parent="textViewSettingsItem">
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:layout_marginRight">7dp</item>
+    </style>
+
+    <style name="textViewSettingsState" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColor">@color/colorGray</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
+    <style name="textViewSettingsLink" parent="@android:style/Widget.TextView">
+        <item name="stories.spectrum.huji.ac.il.stories:font">fonts/gisha.ttf</item>
+        <item name="android:textColor">@color/colorBordo</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
+</resources>

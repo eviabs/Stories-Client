@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:weightSum="1">
+
+            <RelativeLayout
+                android:id="@+id/frameImageTitle"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+                <ImageView
+                    android:id="@+id/imageViewRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/register" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#7000">
+
+                    <ImageView
+                        android:id="@+id/imageViewRegisterText"
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:src="@mipmap/register_text"
+                        android:scaleType="fitCenter"/>
+
+                    <!--<stories.spectrum.huji.ac.il.stories.views.StoriesTextView-->
+                        <!--android:id="@+id/tempTextViewRegister"-->
+                        <!--style="@style/textViewTitle"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_centerInParent="true"-->
+                        <!--android:text="הרשמה" />-->
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frameImageTitle"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
+
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesEditText
+                    android:id="@+id/username"
+                    style="@style/textEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="שם משתמש"
+                    android:inputType="text" />
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesEditText
+                    android:id="@+id/email"
+                    style="@style/textEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:hint="דואר אלקטרוני"
+                    android:inputType="text" />
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesEditText
+                    android:id="@+id/pass"
+                    style="@style/textEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:hint="סיסמא"
+                    android:inputType="textPassword" />
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesEditText
+                    android:id="@+id/passVerify"
+                    style="@style/textEditStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:hint="וודא סיסמא"
+                    android:inputType="textPassword" />
+
+                <stories.spectrum.huji.ac.il.stories.views.StoriesButton
+                    android:id="@+id/register"
+                    style="@style/buttonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:padding="14dp"
+                    android:text="הירשם" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

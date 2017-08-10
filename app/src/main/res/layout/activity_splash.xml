@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="stories.spectrum.huji.ac.il.stories.activities.SplashActivity"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/imageViewSplash"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:src="@mipmap/splash"/>
+
+    <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/website"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="20dp"
+        />
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:indeterminate="true"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:theme="@style/progressDialogWhiteStories"
+
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp" />
+
+</RelativeLayout>
+

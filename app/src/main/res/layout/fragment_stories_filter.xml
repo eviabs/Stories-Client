@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:background="@drawable/story_filters_fragment_border"
+    android:weightSum="10"
+
+    >
+
+        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="תגיות שנבחרו:"
+            style="@style/textViewFiltersFragment"
+            />
+
+        <me.gujun.android.taggroup.TagGroup
+            android:id="@+id/tagGroupChosen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            style="@style/tagGroupReadOnlySelected"
+            android:layout_margin="@dimen/filter_fragment_element_margin"
+            />
+
+        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="תגיות:"
+            style="@style/textViewFiltersFragment"
+            />
+
+        <me.gujun.android.taggroup.TagGroup
+            android:id="@+id/tagGroupAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            style="@style/tagGroupReadOnlyNotSelected"
+            android:layout_margin="@dimen/filter_fragment_element_margin"
+            />
+
+        <!-- Separator -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#ffffff"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            android:layout_margin="@dimen/filter_fragment_element_margin"
+            >
+
+            <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="מרחק (קילומטרים):"
+                style="@style/textViewFiltersFragment"
+                />
+
+            <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+                android:id="@+id/textViewKm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="start"
+                android:layoutDirection="ltr"
+                android:textDirection="ltr"
+                android:layout_weight="1"
+                android:text=""
+                style="@style/textViewFiltersFragment"
+                />
+
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seekBarKm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_weight="1"
+            android:theme="@style/seekBarFiltersFragment"
+            android:progressDrawable="@drawable/seek_bar_progress"
+            />
+
+</LinearLayout>

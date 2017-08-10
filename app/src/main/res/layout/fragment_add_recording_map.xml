@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/TextViewExplainContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:layout_margin="50dp"
+        android:layout_below="@+id/recorder_container"
+        >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/exclamation_mark"
+            android:layout_gravity="center_vertical"
+
+            />
+        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+            android:id="@+id/TextViewExplain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/explain_recording"
+            android:layout_gravity="center_vertical"
+            style="@style/textViewExplanationText"
+            android:layout_marginRight="15dp"
+
+            />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/recorder_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        >
+    </FrameLayout>
+
+    <stories.spectrum.huji.ac.il.stories.views.StoriesButton
+        android:id="@+id/buttonUpload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_recording"
+        android:layout_alignParentBottom="true"
+        style="@style/buttonStyle"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">סיפור מקומי</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_refresh">רענן</string>
+
+    <string name="title_activity_maps">""</string>
+    <string name="title_activity_login">""</string>
+    <string name="title_activity_register">""</string>
+    <string name="title_activity_near_stories">""</string>
+    <string name="title_activity_story">""</string>
+    <string name="title_add_activity_story">""</string>
+    <string name="title_activity_settings">""</string>
+
+    <string name="add_tag">הוסף תגית</string>
+
+
+    <string name="share_via">שתף באמצעות:</string>
+
+
+    <string name="share_app_subject">סיפור מקומי</string>
+    <string name="share_app_body">"סיפור מקומי" היא אפליקציה שחייבים להוריד! הנה לינק: http://www.sipurim.me</string>
+
+    <string name="share_story_subject"> - סיפור מקומי</string>
+    <string name="share_story_body">הנה סיפור שחובה לשמוע! לינק: http://www.sipurim.me?story=</string>
+
+    <string name="menu_home">מסך ראשי</string>
+    <string name="menu_tools">הגדרות</string>
+    <string name="menu_logout">התנתק</string>
+    <string name="menu_share">שתף</string>
+    <string name="menu_send">שלח</string>
+    <string name="menu_title_communicate">שיתוף</string>
+
+
+    <string name="add_story">העלה סיפור</string>
+    <string name="choose_image">בחר תמונה:</string>
+    <string name="add_story_name">בחר שם לסיפור</string>
+
+    <string name="no_location">לא נמצא מיקום</string>
+    <string name="no_image">יש לבחור תמונה</string>
+    <string name="no_story_title">יש לבחור שם לסיפור</string>
+    <string name="no_tags">יש ליצור לפחות תגית אחת</string>
+    <string name="no_recording">יש להקליט התחלה לסיפור</string>
+
+    <string name="cannot_get_distance">מרחק לא ידוע</string>
+    <string name="gps_no_signal">אין קליטת GPS</string>
+    <string name="gps_turned_off">יש להפעיל GPS</string>
+    <string name="gps_turn_on">הפעל</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="website">www.sipurim.me</string>
+    <string name="no_network">אין רשת</string>
+    <string name="retry">נסה שוב</string>
+    <string name="loading">בטעינה</string>
+    <string name="no_permissions">לא ניתנו הרשאות</string>
+    <string name="dismiss">אישור</string>
+    <string name="cancel">ביטול</string>
+    <string name="no_user_pass">מלא שם משתמש וסיסמא</string>
+    <string name="failed_login">פרטי התחברות שגויים</string>
+    <string name="no_username">הכנס שם משתמש</string>
+    <string name="no_pass">הכנס סיסמא</string>
+    <string name="pass_not_equal">סיסמאות אינן זהות</string>
+    <string name="no_email">הכנס דואר אלקטרוני</string>
+    <string name="username_taken">שם משתמש תפוס</string>
+    <string name="error">אירעה שגיאה</string>
+    <string name="prompt_login">כעת תוכל להתחבר</string>
+    <string name="no_recorded_audio">לא נמצאה הקלטה</string>
+    <string name="coord_added">הנקודה נוצרה</string>
+    <string name="add_rating">דירוג הקלטה</string>
+    <string name="ok_rating">דרג</string>
+    <string name="rating_added">ההקלטה דורגה</string>
+    <string name="recording_added">ההקלטה נוצרה</string>
+    <string name="send_recording">העלה הקלטה</string>
+    <string name="explain_recording">לחץ על סימן המיקרופון, והחזק לאורך ההקלטה. לאחר מכן תוכל להעלותה.</string>
+    <string name="explain_recording_add_story">לחץ על סימן המיקרופון, והחזק לאורך ההקלטה. לאחר מכן תוכל להעלות את הסיפור.</string>
+    <string name="explain_coord">לחץ על הכפתור על מנת להוסיף נקודה חדשה לסיפור.</string>
+    <string name="explain_no_recording">לא נמצאו הקלטות. באפשרותך להקליט קטע חדש.</string>
+
+    <string name="settings_settings">הגדרות</string>
+    <string name="settings_about">אודות</string>
+
+    <string name="settings_navigation">ניווט ידני</string>
+    <string name="settings_server">שרת מקומי</string>
+    <string name="settings_on">מופעל</string>
+    <string name="settings_off">כבוי</string>
+    <string name="settings_version">גרסה</string>
+    <string name="settings_website">למידע נוסף</string>
+    <string name="settings_cache">זיכרון מטמון</string>
+    <string name="settings_cache_clear">נקה</string>
+    <string name="settings_cache_delete_prompt">האם אתה בטוח?</string>
+    <string name="yes">כן</string>
+    <string name="no">לא</string>
+</resources>

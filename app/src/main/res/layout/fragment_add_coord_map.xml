@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:layout_margin="50dp"
+        >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/exclamation_mark"
+            android:layout_gravity="center_vertical"
+
+            />
+        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+            android:id="@+id/TextViewExplain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/explain_coord"
+            android:layout_gravity="center_vertical"
+            style="@style/textViewExplanationText"
+            android:layout_marginRight="15dp"
+
+            />
+    </LinearLayout>
+
+    <stories.spectrum.huji.ac.il.stories.views.StoriesButton
+        android:id="@+id/buttonAddCoord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="הוסף נקודה"
+        style="@style/buttonStyle"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

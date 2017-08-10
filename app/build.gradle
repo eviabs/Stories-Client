@@ -1,0 +1,57 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    defaultConfig {
+        applicationId "stories.spectrum.huji.ac.il.stories"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 5
+        versionName "1.2"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        useLibrary 'org.apache.http.legacy' // For deprecated org.apache.http
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    // http://square.github.io/okhttp/
+    // http://square.github.io/picasso/
+    compile('de.keyboardsurfer.android.widget:crouton:1.8.5@aar') {
+        // exclusion is not necessary, but generally a good idea.
+        exclude group: 'com.google.android', module: 'support-v4'
+    }
+
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.squareup.okhttp3:okhttp:3.7.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.android.gms:play-services-maps:10.2.1'
+    compile 'me.gujun.android.taggroup:library:1.4@aar'
+    compile 'com.github.recruit-lifestyle:PlayPauseButton:1.0'
+    compile 'com.github.Mariovc:ImagePicker:1.2.0'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.android.support:support-vector-drawable:25.3.1'
+    testCompile 'junit:junit:4.12'
+}
+
+
+
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}

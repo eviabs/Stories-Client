@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:id="@+id/listViewStoriesContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:layout_marginTop="@dimen/toolbar_header_height"
+        tools:context="stories.spectrum.huji.ac.il.stories.activities.StoryActivity">
+
+        <LinearLayout
+            android:id="@+id/listViewFiltersImageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@null"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/imageViewFilter"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_margin="5dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/filter_filled_tool_symbol"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/filters_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </FrameLayout>
+
+
+        <ListView
+            android:id="@+id/listViewStories"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:divider="@null" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAddStory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/colorGray"
+        android:layout_alignBottom="@+id/listViewStoriesContainer"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/plus_symbol"
+        app:fabSize="normal"
+        app:layout_behavior="stories.spectrum.huji.ac.il.stories.ScrollAwareFABBehavior" />
+</RelativeLayout>
+

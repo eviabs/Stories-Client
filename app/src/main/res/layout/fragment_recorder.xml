@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layoutDirection="ltr"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/recording_list_item_corner"
+    >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/chat_send_button"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="@android:color/transparent"
+            android:enabled="false"
+            android:scaleType="centerInside" />
+
+        <stories.spectrum.huji.ac.il.stories.recorder.FrameLayoutFixed
+            android:id="@+id/record_panel"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_gravity="bottom"
+            android:layout_margin="5dp"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/slideText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="1dp"
+                    android:src="@drawable/slidearrow" />
+
+                <TextView
+                    android:id="@+id/slideToCancelTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="6dp"
+                    android:textColor="#999999"
+                    android:textSize="12dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="13dp">
+
+                <ImageView
+
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="1dp"
+                    android:src="@drawable/rec" />
+
+                <TextView
+                    android:id="@+id/recording_time_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:text="00:00"
+                    android:textColor="#4d4c4b"
+                    android:textSize="16dp" />
+            </LinearLayout>
+        </stories.spectrum.huji.ac.il.stories.recorder.FrameLayoutFixed>
+
+        <ImageButton
+            android:id="@+id/chat_audio_send_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:enabled="false"
+            android:paddingRight="4dp"
+            android:layout_margin="5dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/mic_button_states" />
+
+
+    </RelativeLayout>
+
+</LinearLayout>
+
+
