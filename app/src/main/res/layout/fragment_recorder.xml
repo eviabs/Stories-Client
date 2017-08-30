@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="6dp"
-                    android:textColor="#999999"
+                    android:textColor="@color/colorGray"
                     android:textSize="12dp" />
             </LinearLayout>
 
@@ -65,6 +65,7 @@
                     android:layout_height="33dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
                     android:src="@drawable/rec" />
 
                 <TextView

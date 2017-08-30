@@ -53,4 +53,33 @@
                 style="@style/buttonStyle"
                 />
 
+    <LinearLayout
+        android:id="@+id/firstRecording"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layoutDirection="rtl"
+        android:layout_margin="50dp"
+        android:gravity="center"
+        android:layout_weight="1.0"
+        >
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/exclamation_mark"
+            android:layout_gravity="center_vertical"
+
+            />
+        <stories.spectrum.huji.ac.il.stories.views.StoriesTextView
+            android:id="@+id/TextViewExplainFirstRecording"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/explain_first_recording"
+            android:layout_gravity="center_vertical"
+            style="@style/textViewExplanationText"
+            android:layout_marginRight="15dp"
+
+            />
+    </LinearLayout>
 </LinearLayout>

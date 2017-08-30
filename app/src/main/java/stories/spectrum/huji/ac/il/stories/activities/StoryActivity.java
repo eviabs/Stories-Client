@@ -25,6 +25,7 @@ import stories.spectrum.huji.ac.il.stories.net.StoryServerURLs;
 
 public class StoryActivity extends BaseActivity {
 
+    Story story;
     @Override
     protected int getLayoutId(){
         return R.layout.activity_story;
@@ -38,7 +39,7 @@ public class StoryActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
         Intent i = getIntent();
-        final Story story = (Story) i.getParcelableExtra(Story.NAME_OF_PUT_EXTRA_PARAM);
+        story = (Story) i.getParcelableExtra(Story.NAME_OF_PUT_EXTRA_PARAM);
         Location locationFromSNearStories = (Location) i.getParcelableExtra(NAME_OF_PUT_EXTRA_PARAM_LOCATION);
 
         if (locationFromSNearStories != null) {
@@ -118,5 +119,15 @@ public class StoryActivity extends BaseActivity {
                 startActivity(myWebLink);
             }
         });
+    }
+
+    @Override
+    protected void share() {
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.share_story_subject));
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_story_body) + story.storyID);
+        startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
     }
 }

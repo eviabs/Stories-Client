@@ -28,7 +28,7 @@ public class StoryServerURLs {
 
     /* Seerver URL */
     public static String serverURLServer = "http://ec2-34-209-57-147.us-west-2.compute.amazonaws.com/"; // server
-    public static String serverURLLocal = "http://10.0.0.5:80/"; // home
+    public static String serverURLLocal = "http://10.0.0.3:80/"; // home
     //private static String serverURLUni = "http://132.65.250.11:80/"; // university
 
     public static String serverURL = serverURLServer;

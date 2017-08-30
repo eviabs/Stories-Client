@@ -76,6 +76,7 @@
     <string name="explain_recording_add_story">לחץ על סימן המיקרופון, והחזק לאורך ההקלטה. לאחר מכן תוכל להעלות את הסיפור.</string>
     <string name="explain_coord">לחץ על הכפתור על מנת להוסיף נקודה חדשה לסיפור.</string>
     <string name="explain_no_recording">לא נמצאו הקלטות. באפשרותך להקליט קטע חדש.</string>
+    <string name="explain_first_recording">לא ניתן להוסיף הקלטות חדשות לנקודה הראשונה. המשך לנקודה הבאה או צור נקודה חדשה על מנת להוסיף הקלטה.</string>
 
     <string name="settings_settings">הגדרות</string>
     <string name="settings_about">אודות</string>

@@ -43,6 +43,7 @@ public class RecordingListMapFragment extends Fragment {
     public ArrayList<Recording> recordings = new ArrayList<>();
     RecordingAdapter recordingAdapter;
     LinearLayout noRecordings = null;
+    LinearLayout firstRecording = null;
     ListView listViewRecordings = null;
     Context context = null;
     public Button addRecordingButton = null;
@@ -62,6 +63,7 @@ public class RecordingListMapFragment extends Fragment {
         context = getActivity();
         listViewRecordings = (ListView) view.findViewById(R.id.listViewRecordings);
         noRecordings = (LinearLayout) view.findViewById(R.id.noRecordings);
+        firstRecording = (LinearLayout) view.findViewById(R.id.firstRecording);
         updateRecordingList();
 
         addRecordingButton = (Button) view.findViewById(R.id.moveToAddRecordingFragment);
@@ -126,8 +128,10 @@ public class RecordingListMapFragment extends Fragment {
             if (addRecordingButton != null) {
                 if (coordOrderOfRecordingList == StoryServerURLs.FIRST_COORD_ORDER) {
                     addRecordingButton.setVisibility(View.GONE);
+                    firstRecording.setVisibility(View.VISIBLE);
                 } else {
                     addRecordingButton.setVisibility(View.VISIBLE);
+                    firstRecording.setVisibility(View.GONE);
                 }
             }
 
