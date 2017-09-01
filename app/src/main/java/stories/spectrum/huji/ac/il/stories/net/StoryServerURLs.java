@@ -87,6 +87,10 @@ public class StoryServerURLs {
         return serverURL + "get_data?type=story";
     }
 
+    public static String getStoryByID(String storyID) {
+        return serverURL + "get_data?type=story&story_id=" + storyID;
+    }
+
     public static String getImageURL(String filePath) {
         return serverURL + "get_file?file_name=" + filePath + "&file_type=image";
     }
