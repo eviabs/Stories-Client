@@ -96,6 +96,19 @@ public class SettingsActivity extends BaseActivity {
             }
         });
 
+        final TextView showAllRecordingsTextView = ((TextView) findViewById(R.id.TextViewStateShowAllRecordings));
+        showAllRecordingsTextView.setText(session.getSettingsShowAllRecordings() ? getString(R.string.settings_on) : getString(R.string.settings_off));
+
+        Switch showAllRecordingsSwitch = ((Switch) findViewById(R.id.switchShowAllRecordingsTextView));
+        showAllRecordingsSwitch.setChecked(session.getSettingsShowAllRecordings());
+        showAllRecordingsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                session.setSettingsShowAllRecordings(isChecked);
+                showAllRecordingsTextView.setText(isChecked ? getString(R.string.settings_on) : getString(R.string.settings_off));
+                session.apllySettings();
+            }
+        });
+
         TextView clearCacheTextView = ((TextView) findViewById(R.id.TextViewCacheClear));
         clearCacheTextView.setOnClickListener(new View.OnClickListener() {
             @Override

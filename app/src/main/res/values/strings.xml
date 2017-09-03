@@ -86,6 +86,7 @@
 
     <string name="settings_navigation">ניווט ידני</string>
     <string name="settings_server">שרת מקומי</string>
+    <string name="settings_show_all_recordings">הצג את כל ההקלטות</string>
     <string name="settings_on">מופעל</string>
     <string name="settings_off">כבוי</string>
     <string name="settings_version">גרסה</string>

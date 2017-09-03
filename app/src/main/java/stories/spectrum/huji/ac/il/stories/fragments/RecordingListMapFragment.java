@@ -49,6 +49,7 @@ public class RecordingListMapFragment extends Fragment {
     public Button addRecordingButton = null;
     public int coordArrIndexOfRecordingList = -1;
     public int coordOrderOfRecordingList = -1;
+    public boolean showAllRecordings = true;
 
     public RecordingListMapFragment() {
         // Required empty public constructor
@@ -90,21 +91,21 @@ public class RecordingListMapFragment extends Fragment {
         super.onPause();
 
         recordingAdapter.pausePlayer();
-        Log.e("@@@@@@@@@@@@@@@@", "PAUSE");
+        //Log.e("@@@@@@@@@@@@@@@@", "PAUSE");
     }
 
     @Override
     public void onResume() {
         super.onResume();
         recordingAdapter.resumePlayer();
-        Log.e("@@@@@@@@@@@@@@@@", "RESUME");
+        //Log.e("@@@@@@@@@@@@@@@@", "RESUME");
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         recordingAdapter.killPlayer();
-        Log.e("@@@@@@@@@@@@@@@@", "DEST");
+        //Log.e("@@@@@@@@@@@@@@@@", "DEST");
     }
 
     public void killPlayer() {
@@ -115,14 +116,32 @@ public class RecordingListMapFragment extends Fragment {
 
     public void updateRecordingList() {
 
-        final ArrayList<Recording> recordings = this.recordings;
-
         if (context != null) {
+
+            ArrayList<Recording> availableRecordings = this.recordings;
+
+            // Remove recordings that don't continue the last recording that was played
+            if (!showAllRecordings) {
+                availableRecordings = new ArrayList<>();
+                for (Recording rec : this.recordings) {
+                    if (!((MapsActivity) getActivity()).isNextRecordingOf(rec.recordingPreviousRecordingID) && !((MapsActivity) getActivity()).isFirstCoord()) {
+                        continue;
+                    }
+
+                    availableRecordings.add(rec);
+                }
+            }
+
+            this.recordings = availableRecordings;
+            final ArrayList<Recording> recordings = availableRecordings;
+
             recordingAdapter = new RecordingAdapter(context, this.recordings);
             listViewRecordings.setAdapter(recordingAdapter);
 
             listViewRecordings.setVisibility((recordingAdapter.isEmpty()) ? View.GONE : View.VISIBLE);
-            noRecordings.setVisibility((recordingAdapter.isEmpty())?View.VISIBLE:View.GONE);
+
+            //for (recordingAdapter.getView()
+            noRecordings.setVisibility((recordingAdapter.isEmpty()) ? View.VISIBLE : View.GONE);
 
 
             if (addRecordingButton != null) {
@@ -144,32 +163,32 @@ public class RecordingListMapFragment extends Fragment {
 
             listViewRecordings.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
-                public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, long id)  {
+                public boolean onItemLongClick(AdapterView<?> arg0, View arg1, final int pos, long id) {
 
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-                        builder.setTitle(getString(R.string.add_rating));
-                        final View viewInflated = LayoutInflater.from(context).inflate(R.layout.dialog_recording_rate, (ViewGroup) arg1.findViewById(android.R.id.content), false);
-                        final RatingBar ratingBar = (RatingBar) viewInflated.findViewById(R.id.ratingBar);
+                    builder.setTitle(getString(R.string.add_rating));
+                    final View viewInflated = LayoutInflater.from(context).inflate(R.layout.dialog_recording_rate, (ViewGroup) arg1.findViewById(android.R.id.content), false);
+                    final RatingBar ratingBar = (RatingBar) viewInflated.findViewById(R.id.ratingBar);
 
-                        builder.setView(viewInflated);
+                    builder.setView(viewInflated);
 
-                        // Set up the buttons
-                        builder.setPositiveButton(getString(R.string.ok_rating), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                ((MapsActivity) getActivity()).AsyncAddNewRatingCurrentUser(recordings.get(pos).recordingID, ratingBar.getRating());
-                                dialog.dismiss();
-                            }
-                        });
+                    // Set up the buttons
+                    builder.setPositiveButton(getString(R.string.ok_rating), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ((MapsActivity) getActivity()).AsyncAddNewRatingCurrentUser(recordings.get(pos).recordingID, ratingBar.getRating());
+                            dialog.dismiss();
+                        }
+                    });
 
-                        builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
+                    builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
 
                     builder.show();
 

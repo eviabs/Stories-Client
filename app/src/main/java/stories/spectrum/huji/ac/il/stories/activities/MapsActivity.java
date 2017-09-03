@@ -662,6 +662,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
         fragmentManager.popBackStack("", FragmentManager.POP_BACK_STACK_INCLUSIVE);
 
         recordingListMapFragment.recordings = coords.get(coordArrIndex).coordRecordings;
+        recordingListMapFragment.showAllRecordings = session.getSettingsShowAllRecordings();
         recordingListMapFragment.updateRecordingList();
 
         fragmentTransaction.replace(R.id.container, recordingListMapFragment);
