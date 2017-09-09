@@ -38,7 +38,7 @@ public class AsyncGetRequest extends AsyncTask<String, Void, String>{
         progressDialog = new ProgressDialog(new ContextThemeWrapper(curContext, R.style.progressDialogStories));
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage(curContext.getString(R.string.loading));
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(true);
         progressDialog.setIndeterminate(true);
 
     }

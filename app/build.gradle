@@ -7,8 +7,8 @@ android {
         applicationId "stories.spectrum.huji.ac.il.stories"
         minSdkVersion 19
         targetSdkVersion 25
-        versionCode 5
-        versionName "1.2"
+        versionCode 1
+        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         useLibrary 'org.apache.http.legacy' // For deprecated org.apache.http
         vectorDrawables.useSupportLibrary = true

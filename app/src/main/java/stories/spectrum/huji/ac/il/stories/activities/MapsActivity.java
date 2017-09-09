@@ -331,47 +331,51 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     public void onLocationChanged(Location location) {
         super.onLocationChanged(location);
 
-        if (!session.getSettingsNavigation()){
-            int newCurrentCoordArrIndex = getClosestCoordArrID();
+        // if manual navigation is not set
+        if (!session.getSettingsNavigation()) {
+            // if there is no playing sound
+            if ((recordingListMapFragment != null && recordingListMapFragment.isPlaying())) {
+                int newCurrentCoordArrIndex = getClosestCoordArrID();
 
-            // if coords empty, return and finish
-            if (newCurrentCoordArrIndex == StoryServerURLs.EMPTY_COORD_LIST) {
-                return;
-            }
-
-            // if too far for any coord, show add new coord
-            if (newCurrentCoordArrIndex == StoryServerURLs.TOO_FAR_FROM_COORDS) {
-
-                currentCoordOrder = StoryServerURLs.NOT_EXIST;
-                currentCoordArrIndex = StoryServerURLs.NOT_EXIST;
-
-                // return and do nothing if not all coords visited and were listed to
-                for (Coord coord : coords) {
-                    if (coord.lastPlayedRecordingID == StoryServerURLs.NO_PREVIOUS_RECORDING) {
-                        redrawAllMarkers();
-                        return;
-                    }
+                // if coords empty, return and finish
+                if (newCurrentCoordArrIndex == StoryServerURLs.EMPTY_COORD_LIST) {
+                    return;
                 }
 
-                showAddCoordFragmentAtCoord(new LatLng(location.getLatitude(), location.getLongitude()));
-                return;
+                // if too far for any coord, show add new coord
+                if (newCurrentCoordArrIndex == StoryServerURLs.TOO_FAR_FROM_COORDS) {
 
-            }
+                    currentCoordOrder = StoryServerURLs.NOT_EXIST;
+                    currentCoordArrIndex = StoryServerURLs.NOT_EXIST;
 
-            // get new order
-            int newCurrentCoordOrder = coords.get(newCurrentCoordArrIndex).coordOrder;
+                    // return and do nothing if not all coords visited and were listed to
+                    for (Coord coord : coords) {
+                        if (coord.lastPlayedRecordingID == StoryServerURLs.NO_PREVIOUS_RECORDING) {
+                            redrawAllMarkers();
+                            return;
+                        }
+                    }
+
+                    showAddCoordFragmentAtCoord(new LatLng(location.getLatitude(), location.getLongitude()));
+                    return;
+
+                }
+
+                // get new order
+                int newCurrentCoordOrder = coords.get(newCurrentCoordArrIndex).coordOrder;
 
 
-            //
+                //
 
-            // if we moved, both currentCoordOrder and currentCoordArrIndex needs to be updated
-            if (currentCoordOrder != newCurrentCoordOrder) {
+                // if we moved, both currentCoordOrder and currentCoordArrIndex needs to be updated
+                if (currentCoordOrder != newCurrentCoordOrder) {
 
-                currentCoordOrder = newCurrentCoordOrder;
-                currentCoordArrIndex = newCurrentCoordArrIndex;
+                    currentCoordOrder = newCurrentCoordOrder;
+                    currentCoordArrIndex = newCurrentCoordArrIndex;
 
-                AsyncUpdateRecordingsAtCoord(currentCoordArrIndex);
+                    AsyncUpdateRecordingsAtCoord(currentCoordArrIndex);
 
+                }
             }
         }
     }

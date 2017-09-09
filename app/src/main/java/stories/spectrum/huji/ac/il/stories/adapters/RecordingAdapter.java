@@ -193,6 +193,9 @@ public class RecordingAdapter extends ArrayAdapter<Recording> {
         }
     }
 
+    public boolean isPlaying() {
+        return (player != null && player.isPlaying());
+    }
     public void killPlayer() {
         if (player != null) {
             player.stop();

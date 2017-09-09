@@ -114,6 +114,10 @@ public class RecordingListMapFragment extends Fragment {
         }
     }
 
+    public boolean isPlaying() {
+        return (recordingAdapter != null && recordingAdapter.isPlaying());
+    }
+
     public void updateRecordingList() {
 
         if (context != null) {
