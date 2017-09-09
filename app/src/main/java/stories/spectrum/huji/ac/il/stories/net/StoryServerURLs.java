@@ -14,7 +14,7 @@ public class StoryServerURLs {
 
     public static final int MAX_NUM_OF_COORDS = 10;
 
-    public static final int MAX_DISTANCE_METERS_FROM_ACTIVE_COORD = 50;
+    public static final int MAX_DISTANCE_METERS_FROM_ACTIVE_COORD = 25;
 
     public static final int FIRST_COORD_ORDER = 1;
 

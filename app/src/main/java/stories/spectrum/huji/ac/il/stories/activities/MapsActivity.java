@@ -323,7 +323,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
             }
         }
 
-        //txt.setText(minDistance + " from " + ((minDistance >= 0 && minDistance <= StoryServerURLs.MAX_DISTANCE_METERS_FROM_ACTIVE_COORD) ? closest : -1));
         return (minDistance >= 0 && minDistance <= StoryServerURLs.MAX_DISTANCE_METERS_FROM_ACTIVE_COORD) ? closestCoordID : StoryServerURLs.TOO_FAR_FROM_COORDS;
     }
 
@@ -334,7 +333,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
         // if manual navigation is not set
         if (!session.getSettingsNavigation()) {
             // if there is no playing sound
-            if ((recordingListMapFragment != null && recordingListMapFragment.isPlaying())) {
+            if ((recordingListMapFragment != null && !recordingListMapFragment.isPlaying())) {
                 int newCurrentCoordArrIndex = getClosestCoordArrID();
 
                 // if coords empty, return and finish
@@ -348,7 +347,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
                     currentCoordOrder = StoryServerURLs.NOT_EXIST;
                     currentCoordArrIndex = StoryServerURLs.NOT_EXIST;
 
-                    // return and do nothing if not all coords visited and were listed to
+                    // return and do nothing if not all coords visited and were listened to
                     for (Coord coord : coords) {
                         if (coord.lastPlayedRecordingID == StoryServerURLs.NO_PREVIOUS_RECORDING) {
                             redrawAllMarkers();
@@ -397,7 +396,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
 
     public boolean isNextRecordingOf(int recordingPreviousRecordingID) {
         if (currentCoordOrder > 1) {
-            return coords.get(getCoordArrIDByCoordOrder(currentCoordOrder - 1)).lastPlayedRecordingID == recordingPreviousRecordingID;
+                return coords.get(getCoordArrIDByCoordOrder(currentCoordOrder - 1)).lastPlayedRecordingID == recordingPreviousRecordingID;
         }
 
         return false;
