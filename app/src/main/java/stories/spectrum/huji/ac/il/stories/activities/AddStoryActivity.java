@@ -104,7 +104,7 @@ public class AddStoryActivity extends BaseActivity {
 
                 // If the event is a key-down event on the "enter" button
                 if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    storyTitle.clearFocus();
+
                     return true;
                 }
                 return false;
