@@ -30,7 +30,7 @@ public class SplashActivity extends BaseActivity {
     private final int SPLASH_DISPLAY_LENGTH = 3000;
     private final int STORIES_PERMISSIONS_REQUESTS = 1234;
     private boolean firstPermmisionsRequest = true;
-    private String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.RECORD_AUDIO, Manifest.permission.VIBRATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CLEAR_APP_CACHE};
+    private String[] permissions = new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.RECORD_AUDIO, Manifest.permission.VIBRATE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.CLEAR_APP_CACHE};
 
     @Override
     protected int getLayoutId(){
@@ -51,23 +51,6 @@ public class SplashActivity extends BaseActivity {
     }
 
 
-    public String[] getRequiredPermissions() {
-        String[] permissions = null;
-        try {
-            permissions = getPackageManager().getPackageInfo(getPackageName(),
-                    PackageManager.GET_PERMISSIONS).requestedPermissions;
-
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        if (permissions == null) {
-            return new String[0];
-        } else {
-            return permissions.clone();
-        }
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (requestCode == STORIES_PERMISSIONS_REQUESTS) {
@@ -76,9 +59,10 @@ public class SplashActivity extends BaseActivity {
         }
     }
 
+    /**
+     * Starts the Login activity
+     */
     private void startNextActivity() {
-
-
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -91,46 +75,30 @@ public class SplashActivity extends BaseActivity {
         }, SPLASH_DISPLAY_LENGTH);
     }
 
-
+    /**
+     * Checks what permissions are still needed.
+     * If some permissions were not given, informs the user and doesn't start next activity.
+     */
     private void checkPermissions() {
-
         String[] ungrantedPermissions = requiredPermissionsStillNeeded();
-        if (ungrantedPermissions.length == 0) {
+        Log.d("@@@@@@@@@@@ permissions", "Num of ungranted permissions:" + ungrantedPermissions.length);
+
+        // Since android 7 CLEAR_APP_CACHE cannot be given anymore, so only older phones can use it.
+        if (ungrantedPermissions.length == 0 || ungrantedPermissions[0].equals("android.permission.CLEAR_APP_CACHE"))  {
             startNextActivity();
 
         } else {
-
             if (!firstPermmisionsRequest) {
                 final SplashActivity currentActivity = this;
-                showSnack(getString(R.string.no_permissions), Snackbar.LENGTH_INDEFINITE, getString(R.string.retry), new View.OnClickListener() {
-                    @Override
+                showSnack(getString(R.string.no_permissions), Snackbar.LENGTH_INDEFINITE, getString(R.string.retry), new View.OnClickListener() {@Override
                     public void onClick(View v) {
                         ActivityCompat.requestPermissions(currentActivity, permissions, STORIES_PERMISSIONS_REQUESTS);
                     }
                 });
             } else {
+                firstPermmisionsRequest = false;
                 ActivityCompat.requestPermissions(this,permissions, STORIES_PERMISSIONS_REQUESTS);
             }
         }
-    }
-
-    @NonNull
-    private String[] requiredPermissionsStillNeeded() {
-
-        Set<String> permissions = new HashSet<String>();
-        for (String permission : getRequiredPermissions()) {
-            permissions.add(permission);
-        }
-        for (Iterator<String> i = permissions.iterator(); i.hasNext();) {
-            String permission = i.next();
-
-            if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED) {
-                Log.d(SplashActivity.class.getSimpleName(), "Permission: " + permission + " already granted.");
-                i.remove();
-            } else {
-                Log.d(SplashActivity.class.getSimpleName(), "Permission: " + permission + " not yet granted.");
-            }
-        }
-        return permissions.toArray(new String[permissions.size()]);
     }
 }

@@ -164,13 +164,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
             }
         });
 
-//        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-//            @Override
-//            public void onMapLongClick(final LatLng latLng) {
-//                showAddCoordFragmentAtCoord(latLng);
-//            }
-//        });
-
         // Set my location
         try {
             mMap.setMyLocationEnabled(true);
@@ -200,19 +193,24 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
         }
     }
 
+    /**
+     * Asks the used if he wants to add a new coord
+     *
+     * @param latLng The current GPS pos
+     */
     public void showAddCoordFragmentAtCoord(final LatLng latLng) {
         addCoordMapFragment.setAddCoordButtonListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("To add coord?")
+                builder.setMessage(getResources().getString(R.string.add_new_coord))
                         .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 AsyncAddNewCoord(session.getUserID(), coords.get(0).coordRouteID, latLng.latitude, latLng.longitude);
                             }
                         })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
@@ -224,10 +222,18 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
         showAddCoordFragment();
     }
 
+    /**
+     * Narker types
+     */
     private enum MarkerType {Current, Visited, NotVisited}
 
-    ;
-
+    /**
+     * Creates the Stories' pin
+     *
+     * @param markerType the pin type
+     * @param index the index of the pin
+     * @return a Bitmap
+     */
     private Bitmap getMarkerBitmapFromView(MarkerType markerType, int index) {
 
         // Set custom Image
@@ -265,10 +271,13 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     }
 
     /**
-     * @param index
-     * @param point
-     * @param title
-     * @return
+     * Creates a marker objects
+     *
+     * @param index index if marker
+     * @param point the GPS pos
+     * @param markerType the marker type
+     *
+     * @return a marker object
      */
     private Marker createMarker(int index, LatLng point, MarkerType markerType) {
         // Creating an instance of MarkerOptions
@@ -277,9 +286,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
         // Setting latitude and longitude for the marker
         markerOptions.position(point);
 
-
         markerOptions.title(index + "");
-
 
         // Change icon
         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(getMarkerBitmapFromView(markerType, index)));
@@ -292,7 +299,9 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
         return newMarker;
     }
 
-    //// TODO: 02/06/2017 DOC ME!
+    /**
+     * Redraw all markers according to their new state
+     */
     public void redrawAllMarkers() {
         for (int i = 0; i < coords.size(); ++i) {
             if (coords.get(i).coordOrder == currentCoordOrder) {
@@ -304,7 +313,9 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     }
 
     /**
-     * @return
+     * Gets the closest coord (get its array id)
+     *
+     * @return the id
      */
     private int getClosestCoordArrID() {
 
@@ -363,9 +374,6 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
                 // get new order
                 int newCurrentCoordOrder = coords.get(newCurrentCoordArrIndex).coordOrder;
 
-
-                //
-
                 // if we moved, both currentCoordOrder and currentCoordArrIndex needs to be updated
                 if (currentCoordOrder != newCurrentCoordOrder) {
 
@@ -388,12 +396,21 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
         }
     }
 
+    /**
+     * Update lastPlayedRecordingID
+     * @param lastPlayedRecordingID the if to update
+     */
     public void updateLastPlayedRecordingID(int lastPlayedRecordingID) {
         if (recordingListMapFragment.coordArrIndexOfRecordingList >= 0 && recordingListMapFragment.coordArrIndexOfRecordingList < coords.size()) {
             coords.get(recordingListMapFragment.coordArrIndexOfRecordingList).lastPlayedRecordingID = lastPlayedRecordingID;
         }
     }
 
+    /**
+     * Checks if the current recording is the next recording of the lastPlayedRecordingID
+     * @param recordingPreviousRecordingID
+     * @return
+     */
     public boolean isNextRecordingOf(int recordingPreviousRecordingID) {
         if (currentCoordOrder > 1) {
                 return coords.get(getCoordArrIDByCoordOrder(currentCoordOrder - 1)).lastPlayedRecordingID == recordingPreviousRecordingID;
@@ -410,7 +427,8 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     public boolean isFirstCoord() {
         return currentCoordOrder == 1;
     }
-    /**
+
+    /*
      * ==================================================================
      * ====                   Net Requests                           ====
      * ==================================================================
@@ -420,7 +438,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
      * Create an AJAX call and get the coords o story coordID, and update the map markers.
      * Each marker click event will result listing its recordings.
      *
-     * @param storyID
+     * @param storyID the story id
      */
     private void AsyncUpdateCoordsOfStory(final int storyID) {
 
@@ -479,7 +497,7 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
      * Create an AJAX call and get the recordings of coord coordID, and update the list of recordings.
      * Each list item click event will result playing the sound.
      *
-     * @param coordArrIndex
+     * @param coordArrIndex the coord array index
      */
     private void AsyncUpdateRecordingsAtCoord(final int coordArrIndex) {
 
@@ -526,9 +544,9 @@ public class MapsActivity extends BaseActivity implements OnMapReadyCallback {
     /**
      * Create an AJAX call and upload the recording to the server.
      *
-     * @param file
      * @param userID
      * @param CoordArrIndex
+     * @param lastPlayedRecording
      */
     private void AsyncUploadRecordingToServer(final int userID, final int CoordArrIndex, final int lastPlayedRecording) {
 

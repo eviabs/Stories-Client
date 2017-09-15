@@ -8,7 +8,7 @@ package stories.spectrum.huji.ac.il.stories.net;
 public class StoryServerURLs {
 
     /* Timeout CONST */
-    public static final int TIME_OUT_SECONDS = 10;
+    public static final int TIME_OUT_SECONDS = 15;
 
     public static final int GPS_CHECK_INTERVAL_MILLISECONDS = 1000;
 

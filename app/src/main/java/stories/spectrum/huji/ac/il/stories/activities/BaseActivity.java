@@ -12,17 +12,20 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +35,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -52,6 +58,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
     public static final int OPEN_NEW_ACTIVITY = 999;
 
     protected static final int NO_LOCATION_SET = -1;
+
     protected final Context context = this;
 
     protected Snackbar snackbar = null;
@@ -129,10 +136,8 @@ public abstract class BaseActivity extends AppCompatActivity implements
             final Handler mHandler = new Handler(Looper.getMainLooper()) {
                 @Override
                 public void handleMessage(Message message) {
-//                    if (!croutonShown) {
                     showCrouton();
                     croutonShown = true;
-//                    }
                 }
             };
 
@@ -209,12 +214,80 @@ public abstract class BaseActivity extends AppCompatActivity implements
         lastGPSCheckTime = System.currentTimeMillis();
         dismissCrouton();
         croutonShown = false;
-
-//        String msg = "New Latitude: " + deviceLocation.getLatitude()
-//                + "\nNew Longitude: " + deviceLocation.getLongitude();
-//       Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_refresh) {
+            refresh();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            startActivity(new Intent(BaseActivity.this, NearStoriesActivity.class));
+            finish();
+
+        } else if (id == R.id.nav_logout) {
+            session.logOut();
+            startActivity(new Intent(BaseActivity.this, LoginActivity.class));
+
+
+        } else if (id == R.id.nav_manage) {
+            startActivity(new Intent(BaseActivity.this, SettingsActivity.class));
+
+        } else if (id == R.id.nav_share) {
+            share();
+
+        } else if (id == R.id.nav_send) {
+            send();
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Starts a timer that checks if gps is available.
+     * Not in use ATM!
+     */
     protected void setTimer() {
 
         if (timer == null) {
@@ -343,9 +416,7 @@ public abstract class BaseActivity extends AppCompatActivity implements
     }
 
     /**
-     * Show a crouton with the givrn text
-     *
-     * @param text the text show inside the crouton
+     * Show a crouton
      */
     protected void showCrouton() {
         if (crouton != null) {
@@ -405,74 +476,56 @@ public abstract class BaseActivity extends AppCompatActivity implements
         Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Get a list of the required permissions needed by the app (as in the manifest)
+     *
+     * @return an array of permissions
+     */
+    protected String[] getRequiredPermissions() {
+        String[] permissions = null;
+        try {
+            permissions = getPackageManager().getPackageInfo(getPackageName(),
+                    PackageManager.GET_PERMISSIONS).requestedPermissions;
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (permissions == null) {
+            return new String[0];
         } else {
-            super.onBackPressed();
+            return permissions.clone();
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+    /**
+     * Get a list of the required permissions that are still needed by the app (as in the manifest).
+     * Those permissions where not given or were taken away during runtime.
+     *
+     * @return an array of permissions
+     */
+    @NonNull
+    protected String[] requiredPermissionsStillNeeded() {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_refresh) {
-            refresh();
-            return true;
+        Set<String> permissions = new HashSet<String>();
+        for (String permission : getRequiredPermissions()) {
+            permissions.add(permission);
         }
+        for (Iterator<String> i = permissions.iterator(); i.hasNext();) {
+            String permission = i.next();
 
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_home) {
-            startActivity(new Intent(BaseActivity.this, NearStoriesActivity.class));
-            finish();
-
-        } else if (id == R.id.nav_logout) {
-            session.logOut();
-            startActivity(new Intent(BaseActivity.this, LoginActivity.class));
-
-
-        } else if (id == R.id.nav_manage) {
-            startActivity(new Intent(BaseActivity.this, SettingsActivity.class));
-
-        } else if (id == R.id.nav_share) {
-            share();
-
-        } else if (id == R.id.nav_send) {
-            send();
-
+            if (ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED) {
+                Log.d(SplashActivity.class.getSimpleName(), "Permission: " + permission + " already granted.");
+                i.remove();
+            } else {
+                Log.d(SplashActivity.class.getSimpleName(), "Permission: " + permission + " not yet granted.");
+            }
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+        return permissions.toArray(new String[permissions.size()]);
     }
-
+    /**
+     * The default share functionality
+     */
     protected void share() {
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
@@ -481,11 +534,17 @@ public abstract class BaseActivity extends AppCompatActivity implements
         startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
     }
 
+    /**
+     * The default send functionality
+     */
     protected void send() {
         share();
     }
 
+    /**
+     * The default refresh functionality
+     */
     protected void refresh() {
-        showToast("refresh");
+        // Do nothing
     }
 }

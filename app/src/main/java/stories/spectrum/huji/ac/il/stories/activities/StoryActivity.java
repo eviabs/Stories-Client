@@ -71,16 +71,19 @@ public class StoryActivity extends BaseActivity {
         handleIntent(intent);
     }
 
+    /**
+     * Checks what intent "got" us to this activity: story link or previous activity?
+     * And update the activity.
+     *
+     * @param intent the intent
+     */
     private void handleIntent(Intent intent) {
         String appLinkAction = intent.getAction();
         Uri appLinkData = intent.getData();
 
-        // If er came here from a link:
+        // If we came here from a link:
         if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null){
             storyID = appLinkData.getLastPathSegment();
-//            Uri appData = Uri.parse("content://com.recipe_app/recipe/").buildUpon()
-//                    .appendPath(recipeId).build();
-//            showRecipe(appData);
         // Else, we came here from the near storied activity
         } else {
             Intent i = getIntent();
@@ -92,6 +95,9 @@ public class StoryActivity extends BaseActivity {
         AsyncGetStoryByID(storyID);
     }
 
+    /**
+     * Updates all the views and widgets.
+     */
     private void renderActivity() {
         //Text Font
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/gisha.ttf");
@@ -138,7 +144,9 @@ public class StoryActivity extends BaseActivity {
 
         TextView textDistance = (TextView) findViewById(R.id.TextViewDistance);
         if (textDistance != null) {
+            //TODO: update distance async after some seconds
             textDistance.setText(((distanceFromLocation(story) == -1) ? getString(R.string.cannot_get_distance) : metersToString(distanceFromLocation(story))));
+            //textDistance.setText(((distanceFromLocation(story) == -1) ? "3 מטר" : metersToString(distanceFromLocation(story))));
         }
 
         Button btn = (Button) findViewById(R.id.buttonStartStory);
@@ -153,10 +161,10 @@ public class StoryActivity extends BaseActivity {
             }
         });
 
-        Button btn2 = (Button) findViewById(R.id.buttonNavigate);
+        Button btnNav = (Button) findViewById(R.id.buttonNavigate);
 
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btnNav.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
                 // Send intent
@@ -227,5 +235,13 @@ public class StoryActivity extends BaseActivity {
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, getString(R.string.share_story_subject));
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, getString(R.string.share_story_body) + story.storyID);
         startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_via)));
+    }
+
+    @Override
+    protected void refresh(){
+        TextView textDistance = (TextView) findViewById(R.id.TextViewDistance);
+        if (textDistance != null) {
+            textDistance.setText(((distanceFromLocation(story) == -1) ? getString(R.string.cannot_get_distance) : metersToString(distanceFromLocation(story))));
+        }
     }
 }

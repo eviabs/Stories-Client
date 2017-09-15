@@ -47,6 +47,8 @@
     <string name="empty_field">-</string>
     <string name="start_story">התחל סיפור</string>
 
+    <string name="add_new_coord">האם להוסיף נקודה חדשה למיקומך הנוכחי?</string>
+
     <string name="cannot_get_distance">מרחק לא ידוע</string>
     <string name="gps_no_signal">אין קליטת GPS</string>
     <string name="gps_turned_off">יש להפעיל GPS</string>
