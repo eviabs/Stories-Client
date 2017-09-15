@@ -15,8 +15,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -95,7 +97,22 @@ public class AddStoryActivity extends BaseActivity {
 
         // Story title/name
         storyTitle = (EditText) findViewById(R.id.editTextStoryTitleAddStoryActivity);
+
+        // On enter key. clear focus since new lines are not allowed in story names
+        storyTitle.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                // If the event is a key-down event on the "enter" button
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    storyTitle.clearFocus();
+                    return true;
+                }
+                return false;
+            }
+        });
         storyTitle.clearFocus();
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
 
         // Story Image
         storyImage = (ImageView) findViewById(R.id.imageViewStoryImageStoryActivity);
