@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.os.Parcelable;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -357,6 +358,11 @@ public class AddStoryActivity extends BaseActivity {
     }
 
     public void onPickImage(View view) {
+        // the image picker crashes on Android O, so we use this workaround (which works, but doesn't looks right)
+        // TODO: delete this workaround as soon as ImagePicker get patched
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+
         ImagePicker.pickImage(this, getString(R.string.choose_image));
     }
 
